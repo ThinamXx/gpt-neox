@@ -1,0 +1,71 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "generate",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "generate.py", "-d", "configs", "125M.yml", "local_setup.yml", "text_generation.yml"
+            ]
+        }, 
+        {
+            "name": "prepare data",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "-d", "./data"
+            ]
+        }, 
+        {
+            "name": "training",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "train.py", "-d", "configs", "760M.yml", "local_setup.yml"
+            ]
+        },
+        {
+            "name": "evaluation",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "evaluate.py", "-d", "configs", "125M.yml", "local_setup.yml", "--eval_tasks", "hellaswag", "piqa"
+            ]
+        },  
+        {
+            "name": "preprocess_data",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--input", "/root/nllb/gpt-neox/data/enwik8/enwik8.zip", 
+                "--output-prefix", "/root/nllb/gpt-neox/data/enwik8/enwik8",
+                "--vocab", "/root/nllb/gpt-neox/data/gpt2-vocab.json",
+                "--dataset-impl", "mmap",
+                "--tokenizer-type", "GPT2BPETokenizer",
+                "--merge-file", "/root/nllb/gpt-neox/data/gpt2-merges.txt",
+                "--append-eod",
+                "--workers", "1"
+
+            ]
+        }
+    ]
+}

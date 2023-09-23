@@ -140,7 +140,7 @@ data/**/*.gz
 data/**/*.np*
 data/**/*.npy
 checkpoints/
-.vscode/
+# .vscode/
 *.pt
 *.ckpt
 
@@ -152,3 +152,6 @@ tensorboard/
 src/
 
 .github
+*.output.txt
+data/
+.env
